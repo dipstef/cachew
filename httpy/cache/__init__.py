@@ -1,6 +1,7 @@
 import os
 
 from httpy.request import HttpRequest
+import quelo
 
 from .cache import SqlLiteCache
 
@@ -29,9 +30,12 @@ _init_file = os.path.join(os.path.dirname(__file__), 'cache.sql')
 
 class CacheConnect(object):
 
-    def __init__(self, connection):
+    def __init__(self, connection=quelo.connect):
         self._connection = connection
 
     def __call__(self, path, **kwargs):
         conn = self._connection(path, init_file=_init_file, **kwargs)
-        return SqlLiteCache(conn)
+        return PageResponseCache(SqlLiteCache(conn))
+
+
+connect = CacheConnect(connection=quelo.connect)

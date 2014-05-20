@@ -1,5 +1,5 @@
 create table response (
-    id                  integer primary key not null autoincrement,
+    id                  integer primary key autoincrement,
     request_url         text,
     method              text,
     response_url        text,
