@@ -13,7 +13,7 @@ setup(name=name,
       author_email='dipstef@github.com',
       url='http://github.com/dipstef/{}/'.format(name),
       description=desc,
-      packages = [name],
+      packages = ['httpy.cache'],
       platforms=['Any'],
       requires=['urlo', 'httpy', 'quelo']
 )
