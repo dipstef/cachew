@@ -1,7 +1,7 @@
 import os
 from httpy import cache as httpy_cache
-from httpy.cache.cache import HttpResponseCached
-from httpy.cache.client import ClientOrCache
+from httpy_cache.cache import HttpResponseCached
+from httpy_cache.client import ClientOrCache
 from softarchive.util.httpy_retry import HttpClient
 
 
