@@ -1,8 +1,8 @@
-class ClientOrCache(object):
+class CacheOrClient(object):
 
-    def __init__(self, client, cache):
-        self._client = client
+    def __init__(self, cache, client):
         self._cache = cache
+        self._client = client
 
     def get(self, url, headers=None, force_refresh=False, **kwargs):
         if force_refresh:

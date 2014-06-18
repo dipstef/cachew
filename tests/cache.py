@@ -1,7 +1,7 @@
 import os
 from httpy import cache as httpy_cache
-from httpy_cache.cache import HttpResponseCached
-from httpy_cache.client import ClientOrCache
+from quiche.cache import HttpResponseCached
+from quiche.client import CacheOrClient
 from softarchive.util.httpy_retry import HttpClient
 
 
@@ -11,7 +11,7 @@ def main():
     try:
         cache = httpy_cache.connect(cache_path)
 
-        client_cache = ClientOrCache(HttpClient(), cache)
+        client_cache = CacheOrClient(cache, HttpClient())
 
         url = 'http://www.repubblica.it'
 

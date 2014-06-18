@@ -1,8 +1,6 @@
 import os
-
-from httpy.request import HttpRequest
 import quelo
-
+from httpy.request import HttpRequest
 from .cache import SqlLiteCache
 
 
