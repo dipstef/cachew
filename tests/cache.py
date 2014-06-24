@@ -1,5 +1,5 @@
 import os
-from httpy import cache as httpy_cache
+import quiche
 from quiche.cache import HttpResponseCached
 from quiche.client import CacheOrClient
 from softarchive.util.httpy_retry import HttpClient
@@ -9,7 +9,7 @@ def main():
     cache_path = os.path.join(os.path.dirname(__file__), 'cache.db')
 
     try:
-        cache = httpy_cache.connect(cache_path)
+        cache = quiche.connect(cache_path)
 
         client_cache = CacheOrClient(cache, HttpClient())
 

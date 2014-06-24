@@ -1,8 +1,8 @@
 import cPickle as pickle
 from contextlib import closing
 
-from httpy.headers import HttpHeaders
-from httpy.response import HttpResponse
+from httpy.http.headers import HttpHeaders
+from httpy.http.response import HttpResponse
 from pysqlite2 import dbapi2 as sqlite3
 from urlo.normalize import unquoted
 
