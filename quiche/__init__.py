@@ -1,6 +1,6 @@
 import os
 import quelo
-from httpy.request import HttpRequest
+from httpy import HttpRequest
 from .cache import SqlLiteCache
 
 
@@ -10,7 +10,7 @@ class PageResponseCache(object):
         self._cache = cache
 
     def get_response(self, url, method='GET'):
-        request = HttpRequest(url, method=method)
+        request = HttpRequest(method, url)
         return self._cache.get_response(request)
 
     def store(self, response):
