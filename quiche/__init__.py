@@ -1,12 +1,15 @@
+from contextlib import closing
 import os
 import quelo
 from httpy import HttpRequest
+from .client import CacheOrClient
 from .cache import SqlLiteCache
 
 
-class PageResponseCache(object):
+class PageResponseCache(closing):
 
     def __init__(self, cache):
+        super(PageResponseCache, self).__init__(self)
         self._cache = cache
 
     def get_response(self, url, method='GET'):

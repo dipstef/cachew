@@ -1,20 +1,24 @@
+from datetime import datetime
+from httpy import httpy
+
+
 class CacheOrClient(object):
 
-    def __init__(self, cache, client):
+    def __init__(self, cache, client=httpy):
         self._cache = cache
         self._client = client
 
-    def get(self, url, headers=None, force_refresh=False, **kwargs):
+    def get(self, url, headers=None, force_refresh=False, expiration=None, **kwargs):
         if force_refresh:
             response = self._get_client_response(url, headers, **kwargs)
         else:
-            response = self._get_cache_response(url) or self._get_client_response(url, headers)
+            response = self._get_cache_response(url, expiration) or self._get_client_response(url, headers)
 
         return response
 
-    def _get_cache_response(self, url):
+    def _get_cache_response(self, url, expiration=None):
         response = self._cache.get_response(url)
-        if response:
+        if response and not response.is_older_than(expiration):
             return response
 
     def _get_client_response(self, url, headers, **kwargs):

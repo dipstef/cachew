@@ -1,8 +1,8 @@
 import cPickle as pickle
 from contextlib import closing
+from datetime import datetime
+from httpy import HttpHeaders, HttpResponse
 
-from httpy.http.headers import HttpHeaders
-from httpy.http.response import HttpResponse
 from pysqlite2 import dbapi2 as sqlite3
 from urlo.normalize import unquoted
 
@@ -48,11 +48,15 @@ class SqlLiteCache(closing):
 
 
 def _create_response(request, url, status, headers, body, response_date):
-    return HttpResponseCached(request, url, int(status), pickle.loads(str(headers)), str(body), response_date)
+    return CachedHttpResponse(request, url, int(status), pickle.loads(str(headers)), str(body), response_date)
 
 
-class HttpResponseCached(HttpResponse):
+class CachedHttpResponse(HttpResponse):
+
     def __init__(self, request, url, status, headers, body, date):
-        super(HttpResponseCached, self).__init__(request, url, status, HttpHeaders(headers), body)
+        super(CachedHttpResponse, self).__init__(request, url, status, HttpHeaders(headers), body)
         self.date = date
         self.flags = ['cached']
+
+    def is_older_than(self, expiration):
+        return expiration and datetime.utcnow() - self.date >= expiration
