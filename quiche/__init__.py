@@ -3,7 +3,7 @@ import os
 import quelo
 from httpy import HttpRequest
 from .client import CacheOrClient
-from .cache import SqlLiteCache
+from .cache import SqlLiteCache, CachedHttpResponse
 
 
 class PageResponseCache(closing):
