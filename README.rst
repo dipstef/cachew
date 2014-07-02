@@ -26,10 +26,10 @@ Can be used transparently with an http client, to retrieve responses already cac
 
     from quiche import CacheOrClient
 
-    >>> client_cache = CacheOrClient(cache, httpy)
+    >>> cache = CacheOrClient(cache, httpy)
 
-    >>> response = client_cache.get('http://www.google.com')
-    >>> cache_response = client_cache.get(url)
+    >>> response = cache.get('http://www.google.com')
+    >>> cache_response = cache.get(url)
     assert cache_response.date == response.date
 
 
@@ -37,13 +37,13 @@ Expiration
 
 .. code-block:: python
 
-    >>> response = client_cache.get('http://www.google.com', expiration=seconds(1))
+    >>> response = cache.get('http://www.google.com', expiration=seconds(1))
 
 Force client retrieval
 
 .. code-block:: python
 
-    >>> response = client_cache.get('http://www.google.com', force_refresh=True)
+    >>> response = cache.get('http://www.google.com', force_refresh=True)
 
 
 
