@@ -37,7 +37,7 @@ settings.update(
     url='https://github.com/dipstef/quiche',
     classifiers=CLASSIFIERS,
     keywords='http client content connection cache sqlite database',
-    packages = ['quiche'],
+    packages=['quiche'],
     test_suite='tests',
     package_data={'': ['cache.sql']},
     requires=['pysqlite2', 'urlo', 'httpy', 'quelo']
