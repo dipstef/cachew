@@ -28,16 +28,16 @@ CLASSIFIERS = [
 ]
 
 settings.update(
-    name='quiche',
+    name='cachew',
     version='0.1',
     description='Sqlite http cache',
     long_description=open('README.rst').read(),
     author='Stefano Dipierro',
     license='Apache 2.0',
-    url='https://github.com/dipstef/quiche',
+    url='https://github.com/dipstef/cachew',
     classifiers=CLASSIFIERS,
     keywords='http client content connection cache sqlite database',
-    packages=['quiche'],
+    packages=['cachew'],
     test_suite='tests',
     package_data={'': ['cache.sql']},
     requires=['pysqlite2', 'urlo', 'httpy', 'quelo']

@@ -3,14 +3,14 @@ from dated.timedelta import seconds
 
 from httpy import httpy
 
-import quiche
-from quiche.cache import CachedHttpResponse
-from quiche import CacheOrClient
+import cachew
+from cachew.cache import CachedHttpResponse
+from cachew import CacheOrClient
 
 
 def main():
     try:
-        with quiche.connect('cache.db') as cache:
+        with cachew.connect('cache.db') as cache:
 
             client_cache = CacheOrClient(cache, httpy)
 

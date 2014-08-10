@@ -9,22 +9,22 @@ Usage
 
 .. code-block:: python
 
-    import quiche
+    import cachew
     from httpy import httpy
 
-    with quiche.connect('cache.db') as cache:
+    with cachew.connect('cache.db') as cache:
         response = httpy.get('http://www.google.com')
         cache.store(response)
 
         response = cache.get_response('http://www.google.com')
-        assert isinstance(response, quiche.CachedHttpResponse)
+        assert isinstance(response, cachew.CachedHttpResponse)
 
 
 Can be used transparently with an http client, to retrieve responses already cached or store un-existing ones or expired
 
 .. code-block:: python
 
-    from quiche import CacheOrClient
+    from cachew import CacheOrClient
 
     >>> cache = CacheOrClient(cache, httpy)
 
