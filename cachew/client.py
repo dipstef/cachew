@@ -4,6 +4,7 @@ from httpy import httpy
 class CacheOrClient(object):
 
     def __init__(self, cache, client=httpy):
+        """ :type cache: cachew.PageResponseCache """
         self._cache = cache
         self._client = client
 
@@ -16,7 +17,7 @@ class CacheOrClient(object):
         return response
 
     def _get_cache_response(self, url, expiration=None):
-        response = self._cache.get_response(url)
+        response = self._cache.get(url)
         if response and not response.is_older_than(expiration):
             return response
 

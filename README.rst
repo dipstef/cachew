@@ -16,7 +16,7 @@ Usage
         response = httpy.get('http://www.google.com')
         cache.store(response)
 
-        response = cache.get_response('http://www.google.com')
+        response = cache.get('http://www.google.com')
         assert isinstance(response, cachew.CachedHttpResponse)
 
 
