@@ -6,7 +6,6 @@ from datetime import datetime
 from httpy import HttpHeaders, HttpResponse
 
 from pysqlite2 import dbapi2 as sqlite3
-from quelo.error import TableNotExisting
 from urlo.normalize import unquoted
 
 from .cache_db import get_response, insert_response, update_response, get_history, insert_history
